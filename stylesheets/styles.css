@@ -1,0 +1,281 @@
+/* hide bootstrap icons (not the best solution) */
+[class^="icon-"], [class*=" icon-"] {
+  background:none;
+}
+
+/* BEGIN Gilt Tech Common Header Style */
+/* Header Centered
+********************************/
+
+#header {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: block;
+  overflow: visible;
+}
+
+#footer {
+  margin-top: 80px;
+  margin-bottom: 20px;
+  display: block;
+  overflow: visible;
+}
+
+#header a,
+#footer a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: futura, helvetica, serif;
+  font-size: 12px;
+  color: #888;
+}
+
+@media (min-width: 321px) {
+  #footer a {
+    margin: 0 15px;
+  }
+}
+
+#header a:hover {
+  color: #888;
+}
+
+#header a:active {
+  position: relative;
+  outline: none;
+  top: 1px;
+  color: #888;
+}
+
+.title {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 70px;
+}
+
+.title a {
+  border-bottom: none;
+}
+
+.title img {
+  max-width: 20%;
+}
+
+.description { 
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 20px;
+}
+
+.links {
+  margin-top: 0px;
+  text-align: center;
+  float: none;
+}
+
+#header .links {
+  border-bottom: 1px solid rgba(136, 136, 136, 0.4);
+}
+
+#footer .links {
+  border-top: 1px solid rgba(136, 136, 136, 0.4);
+}
+
+.links ul {
+  margin-top: 10px;
+  padding: 0;
+  display: block; 
+  text-align: center;
+  float: none;
+}
+
+.links li {
+  display: inline;
+  margin-left: 10px;
+  text-transform: none; 
+}
+
+.links li:first-child {
+  margin-left: 0px; 
+}
+
+/* ENG Gilt Tech Common Header Style */
+
+#loading {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.networkError {
+  color: red;
+  font-weight: bold;
+}
+
+#fallback {
+  text-align: center;
+}
+
+#fallback > a {
+  margin: 10px 0 0;
+}
+
+#all-repos {
+  max-width: 979px;
+  margin: 0 auto;
+}
+
+.repo-row {
+  padding: 0 0 10px;
+}
+
+.repo {
+  position: relative;
+  height: 125px;
+  margin: 14px 0 0 0;
+  padding: 2px 10px 10px;
+  border: solid 1px #ddd;
+  -webkit-border-radius: 0 10px 0 10px;
+  -moz-border-radius: 0 10px 0 10px;
+}
+
+.repo:hover {
+  background-color: #f5f5f5;
+}
+
+.repo > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.name {
+}
+
+.description {
+  width: 100%;
+  height: 2.5em;
+  color: #777;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lang {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  padding: 5px;
+  font-size: 12px;
+  color: #fff;
+  border: solid 1px #ddd;
+  -webkit-border-radius: 0 10px 0 10px;
+  -moz-border-radius: 0 10px 0 10px;
+}
+
+
+.repo-icon {
+  color: #777;
+  padding-right: 5px;
+}
+
+.count {
+  color: #777;
+  padding-right: 10px;
+}
+
+.repo:hover .count,
+.repo:hover .repo-icon,
+.repo:hover .description {
+  color: black;
+}
+
+.stats {
+  display: block;
+  max-width: 979px;
+  margin: 0 auto 20px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.repo-stats-inline {
+  text-transform: lowercase;
+}
+
+/* programming language colors */
+/* https://github.com/doda/github-language-colors */
+.arduino { background-color: #bd79d1; }
+.java { background-color: #b07219; }
+.vhdl { background-color: #543978; }
+.scala { background-color: #7dd3b0; }
+.delphi { background-color: #b0ce4e; }
+.ada { background-color: #02f88c; }
+.viml { background-color: #199c4b; }
+.perl { background-color: #0298c3; }
+.lua { background-color: #fa1fa1; }
+.rebol { background-color: #358a5b; }
+.verilog { background-color: #848bf3; }
+.factor { background-color: #636746; }
+.ioke { background-color: #078193; }
+.r { background-color: #198ce7; }
+.erlang { background-color: #949e0e; }
+.nu { background-color: #c9df40; }
+.autohotkey { background-color: #6594b9; }
+.clojure { background-color: #db5855; }
+.shell { background-color: #5861ce; }
+.assembly { background-color: #a67219; }
+.parrot { background-color: #f3ca0a; }
+.turing { background-color: #45f715; }
+.applescript { background-color: #3581ba; }
+.eiffel { background-color: #946d57; }
+.lisp { background-color: #3fb68b; }
+.dart { background-color: #cccccc; }
+.supercollider { background-color: #46390b; }
+.coffeescript { background-color: #244776; }
+.xquery { background-color: #2700e2; }
+.haskell { background-color: #29b544; }
+.racket { background-color: #ae17ff; }
+.elixir { background-color: #6e4a7e; }
+.haxe { background-color: #346d51; }
+.ruby { background-color: #701516; }
+.self { background-color: #0579aa; }
+.fantom { background-color: #dbded5; }
+.groovy { background-color: #e69f56; }
+.c { background-color: #555; }
+.javascript { background-color: #F1E05A; }
+.html { background-color: #E44B23; }
+.css { background-color: #563D7C; }
+.d { background-color: #fcd46d; }
+.ooc { background-color: #b0b77e; }
+/*.c++ { background-color: #f34b7d; }*/
+.dylan { background-color: #3ebc27; }
+.nimrod { background-color: #37775b; }
+.objective-c { background-color: #ff7501; }
+.nemerle { background-color: #0d3c6e; }
+.mirah { background-color: #c7a938; }
+.boo { background-color: #d4bec1; }
+.objective-j { background-color: #ff0c5a; }
+.rust { background-color: #dea584; }
+.prolog { background-color: #74283c; }
+.ecl { background-color: #8a1267; }
+.gosu { background-color: #82937f; }
+.fortran { background-color: #4d41b1; }
+.coldfusion { background-color: #ed2cd6; }
+.ocaml { background-color: #3be133; }
+.fancy { background-color: #7b9db4; }
+.python { background-color: #3581ba; }
+.tcl { background-color: #e4cc98; }
+.arc { background-color: #ca2afe; }
+.puppet { background-color: #cc5555; }
+.io { background-color: #a9188d; }
+.max { background-color: #ce279c; }
+.go { background-color: #8d04eb; }
+.asp { background-color: #6a40fd; }
+.php { background-color: #6e03c1; }
+.scheme { background-color: #1e4aec; }
+.vala { background-color: #3581ba; }
+.smalltalk { background-color: #596706; }
