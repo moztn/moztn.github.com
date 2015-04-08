@@ -6,7 +6,9 @@
 /* BEGIN Gilt Tech Common Header Style */
 /* Header Centered
 ********************************/
-
+body{
+  background: url("../img/bg.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
 #header {
   margin-top: 20px;
   margin-bottom: 40px;
@@ -130,6 +132,8 @@
 }
 
 .repo {
+  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
   position: relative;
   height: 125px;
   margin: 14px 0 0 0;
@@ -204,6 +208,10 @@
 
 .repo-stats-inline {
   text-transform: lowercase;
+}
+.label{
+  position: relative;
+  top: -25%;
 }
 
 /* programming language colors */

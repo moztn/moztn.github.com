@@ -101,7 +101,8 @@ function addRepo(i, repo) {
   if (repo.private) {
     $("<i>").addClass("icon-lock").appendTo(a);
   }
-
+  $("<h4>").addClass("name").text(repo.name).appendTo(a);
+  $("<p>").addClass("description").text(repo.description).appendTo(a);
   $.getJSON(repo.languages_url, function(result) {
     if(result) {
       var languages = Object.keys(result);
@@ -119,12 +120,11 @@ function addRepo(i, repo) {
       });
 
       $.each(languages, function(i, lang) {
-        $("<span>").addClass("lang " + lang.toLowerCase()).text(lang).appendTo(a);
+        $("<span>").addClass("label " + lang.toLowerCase()).text(lang).appendTo(a);
       });
     }
   });
-  $("<h4>").addClass("name").text(repo.name).appendTo(a);
-  $("<p>").addClass("description").text(repo.description).appendTo(a);
+  
 
   r.appendTo(row);
 }
