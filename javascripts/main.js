@@ -30,6 +30,21 @@ function loadRepos(page) {
     });
 }
 
+function addRecentlyUpdatedRepo(repo) {
+  var $item = $("<li>");
+  var $name = $("<a>").attr("href", repo.html_url).text(repo.name);
+  $item.append($("<span>").addClass("name").append($name));
+  var $time = $("<a>").attr("href", repo.html_url + "/commits").text(strftime("%h %e, %Y", repo.pushed_at));
+  $item.append($("<span>").addClass("time").append($time));
+  $item.append('<span class="bullet">&sdot;</span>');
+  var $watchers = $("<a>").attr("href", repo.html_url + "/watchers").text(repo.watchers + " stargazers");
+  $item.append($("<span>").addClass("watchers").append($watchers));
+  $item.append('<span class="bullet">&sdot;</span>');
+  var $forks = $("<a>").attr("href", repo.html_url + "/network").text(repo.forks + " forks");
+  $item.append($("<span>").addClass("forks").append($forks));
+  $item.appendTo("#recently-updated-repos");
+}
+
 function addRepos(repos) {
   var starWeight = 9; // repo watchers
   var forkWeight = 3; // forks of the repo
@@ -67,8 +82,8 @@ function addRepos(repos) {
   });
 
   // show repo stats
-  var stats = $("#repo-stats").text("Providing ");
-  $("<a>").attr("href", "https://github.com/moztn").text(repos.length + " public repositories").appendTo(stats);
+  var stats = $("#repo-stats");
+  $("<a>").attr("href", "https://github.com/moztn").text(repos.length).appendTo(stats);
   stats.removeClass("hidden");
 }
 
@@ -132,10 +147,9 @@ function addRepo(i, repo) {
 function updateMembers() {
   $.getJSON(GH_API_URI + "/orgs/moztn/members?per_page=150", function(result) {
     if (result && result.length > 0) {
-      var stats = $("#member-stats").text("We are ");
-      $("<a>").attr("href", "https://github.com/moztn?tab=members").text(result.length + " members").appendTo(stats);
+      var stats = $("#member-stats");
+      $("<a>").attr("href", "https://github.com/moztn?tab=members").text(result.length).appendTo(stats);
       stats.removeClass("hidden");
-
       // The "Providing N repos" message is designed to be displayed standalone
       // add style to match up the letter case
       $("#repo-stats").addClass("repo-stats-inline");

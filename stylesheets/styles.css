@@ -7,8 +7,22 @@
 /* Header Centered
 ********************************/
 body{
-  background: url("../img/bg.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+  background: url("../img/bg-content.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
+a:link, a:visited {
+    color: #0084b4;
+    text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+#logo-footer{
+  width: 120px;
+  padding: 10px;
+}
+
 #header {
   margin-top: 20px;
   margin-bottom: 40px;
@@ -18,9 +32,10 @@ body{
 
 #footer {
   margin-top: 80px;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
   display: block;
   overflow: visible;
+  /*border-top: 1px solid rgba(136, 136, 136, 0.4);*/
 }
 
 #header a,
@@ -29,7 +44,7 @@ body{
   text-transform: uppercase;
   font-family: futura, helvetica, serif;
   font-size: 12px;
-  color: #888;
+  /*color: #888;*/
 }
 
 @media (min-width: 321px) {
@@ -39,14 +54,32 @@ body{
 }
 
 #header a:hover {
-  color: #888;
+  /*color: #888;*/
+  text-decoration: underline;
 }
 
 #header a:active {
   position: relative;
   outline: none;
   top: 1px;
-  color: #888;
+  /*color: #888;*/
+}
+
+#logo{
+  margin-left: 17%;
+  width: 65%;
+  padding-top: 20px;
+}
+
+#logo-box img {
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+    -ms-transition: -ms-transform .8s ease-in-out;
+    transition: transform .8s ease-in-out;
+}
+#logo-box img:hover {
+   transform: rotateY(360deg);
+    -ms-transform:rotate(360deg);
+    -webkit-transform:rotate(360deg);
 }
 
 .title {
@@ -65,9 +98,13 @@ body{
 }
 
 .description { 
-  font-size: 16px;
-  line-height: 20px;
-  margin-top: 20px;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.slogan{
+  font-size: 18px !important;
+  padding-top: 16px;
 }
 
 .links {
@@ -123,6 +160,10 @@ body{
 }
 
 #all-repos {
+  max-width: 979px;
+  margin: 0 auto;
+}
+.all-repos {
   max-width: 979px;
   margin: 0 auto;
 }
@@ -210,8 +251,13 @@ body{
   text-transform: lowercase;
 }
 .label{
+  margin-right: 3px;
   position: relative;
-  top: -25%;
+  top: -5px;
+}
+
+.charts {
+  height: 253px;
 }
 
 /* programming language colors */

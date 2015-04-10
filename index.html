@@ -11,12 +11,13 @@
 
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="stylesheets/bootstrap.min.css" media="screen">
     <link rel="stylesheet" href="stylesheets/bootstrap-responsive.min.css">
     <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -29,16 +30,36 @@
           <li><a href="http://wiki.mozilla-tunisia.org/ContributionTech">Wiki</a></li>
        </ul>
       </div>
-      <div class="title">
-        <a href="/"><img src="https://moztn.github.io/styleguide/assets/Mozilla_Tunisia_Logo_v2_Black.png" alt="dev_team"/></a>
-        <p class="description">Doing good is part of our code.</p>
+      <div class="all-repos repo-row row-fluid">
+      <div id="logo-box" class="span4 repo" style="height:auto !important;">
+        <a href="/"><img id="logo" src="img/Mozilla_Tunisia_Logo_v2_Black.png" alt="dev_team"/></a>
+        <p class="description slogan text-center">Doing good is part of our code.</p>
+        <ul class="links">
+          <li><a title="Github" href="https://github.com/moztn"><i class="fa fa-github-square fa-2x"></i></a></li>
+          <li><a title="Facebook" href="https://www.facebook.com/mozillatunisia"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+          <li><a title="Twitter" href="https://www.twitter.com/mozillatunisia"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+          <li><a title="Youtube" href="https://www.youtube.com/moztn"><i class="fa fa-youtube-square fa-2x"></i></a></li>
+        </ul>
+        <p class="text-center"><a title="Mail" href=""><i class="fa fa-envelope-square fa-2x"></i> contact@mozilla-tunisia.org</a><p/>
+      </div>
+      <div class="span4 repo">
+        <h4 class="name">Statistics</h4>
+        <p>
+          <a href="https://github.com/moztn/repositories"><span id="repo-stats"></span> </a> public repos
+          <br>
+          <a href="https://github.com/moztn?tab=members"><span id="member-stats"></span></a> members
+        </p>
+      </div>
+      <div id="recently-updated" class="span4 repo">
+        <h4 class="name">Recently updated <a href="https://github.com/moztn/repositories">View All on GitHub</a></h4>
+        <ol id="recently-updated-repos"></ol>
+        
+      </div>
+      <div class="span8 repo charts">
+        <h4 class="name">Chart</h4>
+      </div>
       </div>
     </div>
-
-    <p class="stats">
-      <span id="member-stats" class="hidden"></span>
-      <span id="repo-stats" class="hidden"></span>
-    </p>
 
     <div id="loading">Loading...</div>
     <div id="fallback" class="hidden">
@@ -47,12 +68,27 @@
     <div id="all-repos" class="container-fluid"></div>
 
     <div id="footer">
-      <div class="links">
-        <ul>
+      
+      <div class="links row-fluid">
+        <div class="span4">
+          <a href="http://www.mozilla-tunisia.org/">
+            <img id="logo-footer" alt="mozilla" src="img/footer-mozilla.png">
+          </a>
+        </div>
+        <div class="span4">
+          <a title="Github" href="https://github.com/moztn"><i class="fa fa-github-square fa-3x"></i></a>
+          <a title="Facebook" href="https://www.facebook.com/mozillatunisia"><i class="fa fa-facebook-square fa-3x"></i></a>
+          <a title="Twitter" href="https://www.twitter.com/mozillatunisia"><i class="fa fa-twitter-square fa-3x"></i></a>
+          <a title="Youtube" href="https://www.youtube.com/moztn"><i class="fa fa-youtube-square fa-3x"></i></a>
+        </div>
+        <ul class="span4">
           <li><a href="http://mozilla-tunisia.org/">Mozilla Tunisia</a></li>
+          <li><a href="http://blog.mozilla-tunisia.org/">Blog</a></li>
           <li><a href="http://wiki.mozilla-tunisia.org/ContributionTech">Wiki</a></li>
         </ul>
+        
       </div>
+      
     </div>
 
     <script src="javascripts/jquery-1.10.1.min.js"></script>
