@@ -1,33 +1,53 @@
-var GH_API_URI = "https://api.github.com"
+var GH_API_URI = "http://vps.mozilla-tunisia.org:5000/";
 
 var REPOS_PER_ROW = 3;
 
-var repos = [ ];
-
 $(document).ready(function() {
-  loadRepos(1);
-  updateMembers();
+  fetchGhData();
 });
 
-function loadRepos(page) {
-  $.getJSON(GH_API_URI + "/orgs/moztn/repos?per_page=100&page=" + page,
-    function(result) {
-      if (result && result.length > 0) {
-        repos = repos.concat(result);
-        loadRepos(page + 1);
-      }
-      else {
-        addRepos(repos);
-      }
-    }).fail(function(xhr,textStatus,error) {
-      $("#loading").addClass("networkError").text("An error occurred while communicating with GitHub.");
+
+function fetchGhData() {
+  $.getJSON(GH_API_URI,
+  function(result) {
+    addRepos(result.repos);
+    updateMembers(result.members);
+  }).fail(function(xhr, textStatus, error) {
+      console.log(error);
+      $("#loading").addClass("networkError").text("An error occurred while communicating with our servers.");
       if (xhr.responseJSON && xhr.responseJSON["message"]) {
         $("<div>").text("(" + xhr.responseJSON["message"] + ")").appendTo($("#loading"));
       }
       $("#fallback").removeClass("hidden");
-      //getResponseHeader("X-RateLimit-Remaining"
-      //getResponseHeader("X-RateLimit-Limit")
+   });
+}
+
+
+function getSortedLeaders(repos) {
+
+  var leaders = {};
+  $.each(repos, function (i, repo) {
+    $.getJSON(repo.contributors_url, function(results) {
+      $.each(results, function(i, result) {
+        if( leaders[result.login] ) {
+          leaders[result.login] += result.contributions;
+        }else {
+          leaders[result.login] = result.contributions;
+        }
+       }); // each
     });
+  });
+
+  var sortableLeaders = [];
+  for( var l in leaders ) {
+    sortableLeaders.push([l, leaders[l]]);
+  }
+
+  console.log("SortedLeaders");
+  console.log(sortableLeaders);
+  sortableLeaders.sort(function(a,b) { return b[1] - a[1]; });
+  return  sortableLeaders;
+
 }
 
 function addRecentlyUpdatedRepo(repo) {
@@ -60,7 +80,6 @@ function addRepos(repos) {
       (!repo.fork * giltWeight);
     repo["gilt_weight"] = weight;
   });
-  console.log(repos);
 
   repos = repos.sort(function(a,b) {
     var aw = a["gilt_weight"];
@@ -85,6 +104,10 @@ function addRepos(repos) {
   var stats = $("#repo-stats");
   $("<a>").attr("href", "https://github.com/moztn").text(repos.length).appendTo(stats);
   stats.removeClass("hidden");
+
+  var leaders = getSortedLeaders(repos);
+  console.log(leaders);
+
 }
 
 
@@ -118,41 +141,21 @@ function addRepo(i, repo) {
   }
   $("<h4>").addClass("name").text(repo.name).appendTo(a);
   $("<p>").addClass("description").text(repo.description).appendTo(a);
-  $.getJSON(repo.languages_url, function(result) {
-    if(result) {
-      var languages = Object.keys(result);
-      languages = languages.sort(function (a, b) {
-        var a_lines = result[a];
-        var b_lines = result[b];
-        if (a_lines == b_lines) {
-          return 0;
-        } else if (a_lines < b_lines) {
-          return 1;
-        }
-        else {
-          return -1;
-        }
-      });
-
+      
+      var languages = repo.lang;
+     
       $.each(languages, function(i, lang) {
         $("<span>").addClass("label " + lang.toLowerCase()).text(lang).appendTo(a);
       });
-    }
-  });
-  
 
   r.appendTo(row);
 }
 
-function updateMembers() {
-  $.getJSON(GH_API_URI + "/orgs/moztn/members?per_page=150", function(result) {
-    if (result && result.length > 0) {
+function updateMembers(aMembersList) {
+    if (aMembersList && aMembersList.length > 0) {
       var stats = $("#member-stats");
-      $("<a>").attr("href", "https://github.com/moztn?tab=members").text(result.length).appendTo(stats);
+      $("<a>").attr("href", "https://github.com/moztn?tab=members").text(aMembersList.length).appendTo(stats);
       stats.removeClass("hidden");
-      // The "Providing N repos" message is designed to be displayed standalone
-      // add style to match up the letter case
       $("#repo-stats").addClass("repo-stats-inline");
     }
-  });
 }
